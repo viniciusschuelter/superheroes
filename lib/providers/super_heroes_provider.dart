@@ -19,13 +19,14 @@ class SuperHeroesProvider with ChangeNotifier {
       Uri url = Uri.parse('https://akabab.github.io/superhero-api/api/all.json');
       final response = await http.get(url);
       final responseData = json.decode(response.body) as List<dynamic>;
-      responseData.map((element) => SuperHero.fromJson(element));
+      responseData.forEach((element) => heroesList.add(SuperHero.fromJson(element)));
+      var count = heroesList.length;
+      debugPrint('count: $count');
       isLoading = false;
       notifyListeners();
       inspect(heroesList);
     } catch (e) {
       isRequestError = true;
-      throw (e);
     }
   }
 }
