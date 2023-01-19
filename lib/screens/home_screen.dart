@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes/providers/super_heroes_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:superheroes/widgets/super_heroes_card.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Column(
                             children: heroesList
                                 .map((item) => HeroCard(item, context))
-                                .take(5)
+                                .take(10)
                                 .toList(),
                           ),
                         ],
@@ -59,78 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class HeroCard extends StatelessWidget {
-  final dynamic hero;
-  final BuildContext context;
-
-  const HeroCard(this.hero, this.context);
-
-  @override
-  Widget build(BuildContext context) {
-    var name = hero.name;
-    debugPrint('name: $name');
-
-    return GestureDetector(
-        onTap: () {
-          // Navigator.of(context).pushNamed(routeName, arguments: hero.id);
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-          margin: EdgeInsets.only(bottom: 20, top: 5, left: 5, right: 5),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(0, 245, 240, 240),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Color.fromARGB(0, 245, 240, 240).withOpacity(0.5),
-                blurRadius: 5,
-                offset: Offset(2, 3),
-              ),
-            ],
-          ),
-          child: Stack(clipBehavior: Clip.none, children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '#' + hero.id.toString(),
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
-                ),
-                Text(
-                  hero.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 25,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Row(
-                  children: [
-                    // if (hero.type1 != null) TypeCard(poke.type1),
-                    SizedBox(width: 5),
-                    // if (hero.type2 != null) TypeCard(poke.type2),
-                  ],
-                )
-              ],
-            ),
-            Positioned(
-              right: -35,
-              bottom: -50,
-              child: FadeInImage.assetNetwork(
-                placeholder: 'images/super-heroes.gif',
-                image: hero.images.xs,
-                imageScale: 0.5,
-              ),
-            ),
-          ]
-        ),
-      )
     );
   }
 }
