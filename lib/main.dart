@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:superheroes/providers/super_heroes_provider.dart';
+import 'package:superheroes/screens/super_hero_screen.dart';
 
 import 'screens/home_screen.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
         home: HomeScreen(),
         routes: {
-          // HeroDetailScreen.routeName: (ctx) => HeroDetailScreen(),
+          SuperHeroScreen.routeName: (ctx) => SuperHeroScreen(),
         },
       ),
     );

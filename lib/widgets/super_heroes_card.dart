@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:superheroes/screens/super_hero_screen.dart';
 
 class HeroCard extends StatelessWidget {
   final dynamic hero;
@@ -14,7 +15,7 @@ class HeroCard extends StatelessWidget {
 
     return GestureDetector(
         onTap: () {
-          // Navigator.of(context).pushNamed(routeName, arguments: hero.id);
+          Navigator.of(context).pushNamed(SuperHeroScreen.routeName, arguments: hero);
         },
         child: Container(
           width: MediaQuery.of(context).size.width,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes/providers/super_heroes_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:superheroes/utils/const.dart';
 import 'package:superheroes/widgets/super_heroes_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,8 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
     var count = heroesList.length;
     debugPrint('count: $count');
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(Constants.appName),
+        foregroundColor: Colors.red,
+      ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(20, 5, 20, 0),
+        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Column(
           children: [
             // Container(
