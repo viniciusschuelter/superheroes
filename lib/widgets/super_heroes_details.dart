@@ -1,26 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:superheroes/models/super_hero_model.dart';
 import 'package:superheroes/screens/super_hero_screen.dart';
 
-class HeroDetails extends StatelessWidget {
-  final dynamic hero;
-  final BuildContext context;
 
-  const HeroDetails(this.hero, this.context);
+class Details extends StatefulWidget {
+  final SuperHero hero;
+
+  Details({required this.hero}) : super();
 
   @override
+  _DetailsState createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+  @override
   Widget build(BuildContext context) {
+    return SuperheroDetails(hero: widget.hero, context: context);
+  }
+}
+
+class SuperheroDetails extends StatefulWidget {
+  final SuperHero hero;
+  final BuildContext context;
+
+  const SuperheroDetails({super.key, required this.hero, required this.context});
+
+  @override
+  _SuperheroDetailsState createState() => _SuperheroDetailsState();
+}
+
+
+class _SuperheroDetailsState extends State<SuperheroDetails> {
+    late final dynamic hero;
     Map<String, bool> mapExpansionList = Map<String, bool>();
-    mapExpansionList.addAll({
-      "Biography": true,
-      "Appearance": false,
-      "Work": false,
-      "Power Stats": false,
-      "Connections": false,
-    });
+    bool checkExpansion(String key) {
+      return mapExpansionList[key] == true ? true : false;
+   }
 
-    var bio = mapExpansionList["Biography"];
+    @override
+    void initState() {
+      super.initState();
+      hero = super.widget.hero;
 
-    debugPrint('$bio');
+      mapExpansionList.addAll({
+        "Biography": true,
+        "Appearance": false,
+        "Work": false,
+        "Power Stats": false,
+        "Connections": false,
+      });
+    }
+    
+  @override
+  Widget build(BuildContext context) {
 
     return SingleChildScrollView(
       child: Container(
@@ -30,43 +62,18 @@ class HeroDetails extends StatelessWidget {
           children: <Widget>[
             Hero(
               tag: hero.id,
-              child: Positioned(
-                  top: -8,
-                  right: -8,
-                  child: Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(hero.images.sm)
-                        )
-                    )
-                  ),
-                ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image(image: NetworkImage(hero.images.sm)),
+              )
             ),
-            SizedBox(
-              height: 13.0,
-            ),
-            Text(
-              hero.name,
-              // style: textTheme.headline6,
-            ),
-            Text(
-              hero.biography.fullName.isEmpty? hero.name : hero.biography.fullName,
-              // style: textTheme.subtitle1.copyWith(
-              //   fontWeight: FontWeight.w300,
-              // ),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
+            SizedBox(height: 24),
             ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {
-                var key = mapExpansionList.keys.toList()[index];
-                  debugPrint('$index, $isExpanded, $key');
-                  mapExpansionList[mapExpansionList.keys.toList()[index]] = !isExpanded;
+                setState(() {
+                  mapExpansionList[mapExpansionList.keys
+                      .toList()[index]] = !isExpanded;
+                });
               },
               children: <ExpansionPanel>[
                 ExpansionPanel(
@@ -78,7 +85,7 @@ class HeroDetails extends StatelessWidget {
                       ));
                     },
                     body: Text("Biography works"),
-                    isExpanded: mapExpansionList["Biography"] == true ? true :
+                    isExpanded: checkExpansion('Biography')
                 ),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
@@ -89,6 +96,7 @@ class HeroDetails extends StatelessWidget {
                       ));
                     },
                     body: Text("Appearance works"),
+                    isExpanded: checkExpansion('Appearance')
                     ),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
@@ -99,6 +107,7 @@ class HeroDetails extends StatelessWidget {
                       ));
                     },
                     body: Text("Work works"),
+                    isExpanded: checkExpansion('Work')
                     ),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
@@ -109,6 +118,7 @@ class HeroDetails extends StatelessWidget {
                       ));
                     },
                     body: Text("Power Stats works"),
+                    isExpanded: checkExpansion('Power Stats')
                     ),
                 ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
@@ -119,6 +129,7 @@ class HeroDetails extends StatelessWidget {
                       ));
                     },
                     body: Text("Connections works"),
+                    isExpanded: checkExpansion('Connections')
                     ),
               ],
             ),

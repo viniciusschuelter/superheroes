@@ -15,14 +15,23 @@ class _SuperHeroScreenState extends State<SuperHeroScreen> {
   @override
   Widget build(BuildContext context) {
   final SuperHero hero = ModalRoute.of(context)?.settings.arguments as SuperHero;
+  final String? title = hero.name;
   
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(Constants.detailsName),
+        title: Text(title != null ? (title + ' details') : Constants.detailsName),
         foregroundColor: Colors.red,
       ),
-      body: HeroDetails(hero, context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Icon(Icons.arrow_back, size: 24),
+        mini: true,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      body: Details(hero: hero),
     );
   }
 }
