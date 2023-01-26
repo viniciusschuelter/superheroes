@@ -1,5 +1,7 @@
 
 
+import 'dart:ffi';
+
 class SuperHero {
   int ?id;
   String ?name;
@@ -144,14 +146,15 @@ class Biography {
   String ?publisher;
   String ?alignment;
 
-  Biography(
-      {this.fullName,
+  Biography({
+      this.fullName,
       this.alterEgos,
       this.aliases,
       this.placeOfBirth,
       this.firstAppearance,
       this.publisher,
-      this.alignment});
+      this.alignment
+      });
 
   Biography.fromJson(Map<String, dynamic> json) {
     fullName = json['fullName'];

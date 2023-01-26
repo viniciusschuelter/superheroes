@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes/models/super_hero_model.dart';
-import 'package:superheroes/screens/super_hero_screen.dart';
+import 'package:superheroes/widgets/super_hero_bio_detail.dart';
 
 
 class Details extends StatefulWidget {
@@ -84,7 +84,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ));
                     },
-                    body: Text("Biography works"),
+                    body: SuperHeroBioDetail(hero: this.hero),
                     isExpanded: checkExpansion('Biography')
                 ),
                 ExpansionPanel(
