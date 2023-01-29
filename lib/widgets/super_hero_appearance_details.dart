@@ -1,13 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:superheroes/models/super_hero_model.dart';
+import 'package:superheroes/utils/functions.dart';
 
 class SuperHeroAppearanceDetail extends StatelessWidget {
   final SuperHero hero;
-
-  dynamic defaultStringValue(dynamic str) {
-    return str != null ? str : '';
-  }
 
   const SuperHeroAppearanceDetail({required this.hero}) : super();
 
@@ -22,7 +19,7 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
-            defaultStringValue(hero.appearance?.gender),
+            defaultDynamicValue(hero.appearance?.gender),
             style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
@@ -32,7 +29,7 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
-            defaultStringValue(hero.appearance?.race)
+            defaultDynamicValue(hero.appearance?.race)
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
@@ -45,7 +42,7 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
-            defaultStringValue(hero.appearance?.height)
+            defaultDynamicValue(hero.appearance?.height)
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
@@ -58,7 +55,7 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
-            defaultStringValue(hero.appearance?.weight)
+            defaultDynamicValue(hero.appearance?.weight)
                 .toString()
                 .replaceAll("[", "")
                 .replaceAll("]", ""),
@@ -71,7 +68,7 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           subtitle: Text(
-            defaultStringValue(hero.appearance?.eyeColor),
+            defaultDynamicValue(hero.appearance?.eyeColor),
             style: TextStyle(fontWeight: FontWeight.w300),
           ),
         ),
