@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Column(
                             children: heroesList
                                 .map((item) => HeroCard(item, context))
-                                .take(5)
+                                .take(50)
                                 .toList(),
                           ),
                         ],

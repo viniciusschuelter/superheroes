@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes/models/super_hero_model.dart';
+import 'package:superheroes/utils/functions.dart';
 
 class SuperHeroBioDetail extends StatelessWidget {
   final SuperHero hero;
@@ -8,10 +9,6 @@ class SuperHeroBioDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    String defaultStringValue(dynamic str) {
-      return str != null ? str : '';
-    }
 
     return Column(
       children: <Widget>[

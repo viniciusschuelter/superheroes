@@ -13,9 +13,6 @@ class SuperHeroAppearanceDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    var height = defaultStringValue(hero.appearance?.height);
-    debugPrint('height: $height');
     
     return Column(
       children: <Widget>[
