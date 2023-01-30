@@ -10,11 +10,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _controller = ScrollController();
+  int pageSize = 10;
+  int cardSize = 140;
+
   @override
   void initState() {
     super.initState();
+    _controller.addListener(() {
+      var offset = _controller!.offset;
+      var bodyHeight = MediaQuery.of(context).size.height;
+      if (offset > (cardSize * pageSize) - bodyHeight) {
+        debugPrint('offset: $offset'); // <-- This is it.
+        debugPrint('pageSize: $pageSize'); // <-- This is it.
+        setState(() {
+          pageSize += 10;
+        });
+      }
+    });
     Provider.of<SuperHeroesProvider>(context, listen: false)
         .getAllSuperHeroes();
+  }
+
+  
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   Future<void> _refreshData(BuildContext context) async {
@@ -51,12 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   : RefreshIndicator(
                       onRefresh: () => _refreshData(context),
                       child: ListView(
+                        controller: _controller,
                         padding: EdgeInsets.only(top: 20),
                         children: [
                           Column(
                             children: heroesList
                                 .map((item) => HeroCard(item, context))
-                                .take(50)
+                                .take(pageSize)
                                 .toList(),
                           ),
                         ],

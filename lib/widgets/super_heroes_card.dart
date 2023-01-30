@@ -10,8 +10,8 @@ class HeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var name = hero.name;
-    debugPrint('name: $name');
+    // var name = hero.name;
+    // debugPrint('name: $name');
 
     return GestureDetector(
         onTap: () {
