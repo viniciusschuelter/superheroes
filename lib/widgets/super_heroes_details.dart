@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:superheroes/models/super_hero_model.dart';
 import 'package:superheroes/widgets/super_hero_appearance_details.dart';
 import 'package:superheroes/widgets/super_hero_bio_detail.dart';
+import 'package:superheroes/widgets/super_hero_connections_details.dart';
 import 'package:superheroes/widgets/super_hero_stats_details.dart';
 import 'package:superheroes/widgets/super_hero_work_details.dart';
 
@@ -131,7 +132,7 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ));
                     },
-                    body: Text("Connections works"),
+                    body: SuperHeroConnectionsDetails(hero: this.hero),
                     isExpanded: checkExpansion('Connections')
                     ),
               ],
