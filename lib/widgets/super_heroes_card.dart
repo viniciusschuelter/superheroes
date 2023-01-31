@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:superheroes/models/super_hero_model.dart';
 import 'package:superheroes/screens/super_hero_screen.dart';
+import 'package:superheroes/utils/functions.dart';
 
 class HeroCard extends StatelessWidget {
-  final dynamic hero;
+  final SuperHero hero;
   final BuildContext context;
 
   const HeroCard(this.hero, this.context);
@@ -34,7 +36,7 @@ class HeroCard extends StatelessWidget {
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                 ),
                 Text(
-                  hero.name,
+                  defaultStringValue(hero.name),
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -53,8 +55,7 @@ class HeroCard extends StatelessWidget {
                       width: 2.0,
                     ),
                     Flexible(
-                      child: Text(
-                        "${hero.biography.publisher}",
+                      child: Text(defaultStringValue(hero.biography?.publisher),
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey,),
                       ),
                     ),
@@ -72,7 +73,7 @@ class HeroCard extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: NetworkImage(hero.images.sm)
+                        image: NetworkImage(defaultStringValue(hero.images?.sm))
                     )
                 )
               ),

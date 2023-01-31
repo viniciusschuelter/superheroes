@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:superheroes/models/super_hero_model.dart';
 import 'package:superheroes/providers/super_heroes_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:superheroes/utils/const.dart';
 import 'package:superheroes/widgets/super_heroes_card.dart';
+import 'package:superheroes/widgets/super_heroes_search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _controller = ScrollController();
+  String searchTerm = '';
   int pageSize = 10;
   int cardSize = 140;
 
@@ -18,11 +21,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _controller.addListener(() {
-      var offset = _controller!.offset;
+      var offset = _controller.offset;
       var bodyHeight = MediaQuery.of(context).size.height;
       if (offset > (cardSize * pageSize) - bodyHeight) {
-        debugPrint('offset: $offset'); // <-- This is it.
-        debugPrint('pageSize: $pageSize'); // <-- This is it.
         setState(() {
           pageSize += 10;
         });
@@ -47,10 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<SuperHeroesProvider>(context);
-    final heroesList = data.heroesList;
+    final List<SuperHero>  heroesList = data.heroesList;
 
     var count = heroesList.length;
     debugPrint('count: $count');
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -61,12 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Column(
           children: [
-            // Container(
-            //   padding: EdgeInsets.only(bottom: 15),
-            //   height: MediaQuery.of(context).size.width / 1.5,
-            //   width: MediaQuery.of(context).size.width,
-            //   // child: HomeSearch(),
-            // ),
+            Container(
+              padding: EdgeInsets.only(bottom: 15),
+              width: MediaQuery.of(context).size.width,
+              child: SuperHeroesSearchBar(
+                onTextChanged: (value) => setState(() {
+                  searchTerm = value;
+                  debugPrint('value: $value');
+                })
+              ),
+            ),
             Expanded(
               child: data.isLoading
                   ? Center(child: Image.asset('images/super-heroes.gif'))
@@ -79,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Column(
                             children: heroesList
                                 .map((item) => HeroCard(item, context))
+                                .where((el) => el.hero.name!.toLowerCase().contains(searchTerm.toLowerCase()))
                                 .take(pageSize)
                                 .toList(),
                           ),

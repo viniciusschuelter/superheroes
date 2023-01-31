@@ -19,9 +19,9 @@ class SuperHeroesProvider with ChangeNotifier {
       Uri url = Uri.parse('https://akabab.github.io/superhero-api/api/all.json');
       final response = await http.get(url);
       final responseData = json.decode(response.body) as List<dynamic>;
-      responseData.forEach((element) => heroesList.add(SuperHero.fromJson(element)));
-      var count = heroesList.length;
-      debugPrint('count: $count');
+      for (var element in responseData) {
+        heroesList.add(SuperHero.fromJson(element));
+      }
       isLoading = false;
       notifyListeners();
       inspect(heroesList);
