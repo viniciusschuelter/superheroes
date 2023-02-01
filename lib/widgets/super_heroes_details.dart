@@ -85,10 +85,14 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                       return ListTile(
                           title: Text(
                         "Biography",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                          )
                       ));
                     },
                     body: SuperHeroBioDetail(hero: this.hero),
+                    backgroundColor: Color.fromRGBO(185, 190, 186, 1),
                     isExpanded: checkExpansion('Biography')
                 ),
                 ExpansionPanel(
@@ -96,10 +100,14 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                       return ListTile(
                           title: Text(
                         "Appearance",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                          )
                       ));
                     },
                     body: SuperHeroAppearanceDetail(hero: this.hero),
+                    backgroundColor: Color.fromRGBO(185, 190, 186, 1),
                     isExpanded: checkExpansion('Appearance')
                     ),
                 ExpansionPanel(
@@ -107,10 +115,14 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                       return ListTile(
                           title: Text(
                         "Work",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                          )
                       ));
                     },
                     body: SuperHeroWorkDetails(hero: this.hero),
+                    backgroundColor: Color.fromRGBO(185, 190, 186, 1),
                     isExpanded: checkExpansion('Work')
                     ),
                 ExpansionPanel(
@@ -118,10 +130,14 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                       return ListTile(
                           title: Text(
                         "Power Stats",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                          )
                       ));
                     },
                     body: SuperHeroStatsDetails(hero: this.hero),
+                    backgroundColor: Color.fromRGBO(185, 190, 186, 1),
                     isExpanded: checkExpansion('Power Stats')
                     ),
                 ExpansionPanel(
@@ -129,10 +145,14 @@ class _SuperheroDetailsState extends State<SuperheroDetails> {
                       return ListTile(
                           title: Text(
                         "Connections",
-                        style: TextStyle(fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white
+                          )
                       ));
                     },
                     body: SuperHeroConnectionsDetails(hero: this.hero),
+                    backgroundColor: Color.fromRGBO(185, 190, 186, 1),
                     isExpanded: checkExpansion('Connections')
                     ),
               ],

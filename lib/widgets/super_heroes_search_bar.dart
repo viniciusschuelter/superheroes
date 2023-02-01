@@ -25,11 +25,11 @@ class _SuperHeroesSearchBarState extends State<SuperHeroesSearchBar> {
     return Container(
       margin: const EdgeInsets.only(top: 25),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Color.fromRGBO(185, 190, 186, 0.7),
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextField(
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: Colors.grey[800]),
         maxLines: 1,
         controller: _textController,
         decoration: InputDecoration(

@@ -21,15 +21,14 @@ class _SuperHeroScreenState extends State<SuperHeroScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(title != null ? (title + ' details') : Constants.detailsName),
-        foregroundColor: Colors.red,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: Icon(Icons.arrow_back, size: 24),
-        mini: true,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.pop(context);
+      //   },
+      //   child: Icon(Icons.arrow_back, size: 24),
+      //   mini: true,
+      // ),s
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       body: Details(hero: hero),
     );

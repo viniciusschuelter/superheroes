@@ -55,16 +55,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         title: Text(Constants.appName),
-        foregroundColor: Colors.red,
+        // foregroundColor: Colors.red,
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(bottom: 15),
+              padding: EdgeInsets.only(bottom: 4),
               width: MediaQuery.of(context).size.width,
               child: SuperHeroesSearchBar(
                 onTextChanged: (value) => setState(() {

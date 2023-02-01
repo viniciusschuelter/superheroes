@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: AppBarTheme(
-            color: Colors.transparent,
+            color: Color.fromRGBO(217, 61, 39, 1),
             iconTheme: IconThemeData(
               color: Colors.white,
             ),
             elevation: 0,
           ),
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: Color.fromRGBO(239, 165, 58, 1),
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),

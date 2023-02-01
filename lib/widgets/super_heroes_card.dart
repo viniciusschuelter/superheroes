@@ -24,7 +24,7 @@ class HeroCard extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
           margin: EdgeInsets.only(bottom: 20, top: 5, left: 5, right: 5),
           decoration: BoxDecoration(
-            color: Colors.grey[300],
+            color: Color.fromRGBO(185, 190, 186, 1),
             borderRadius: BorderRadius.circular(5)
           ),
           child: Stack(clipBehavior: Clip.none, children: [
@@ -47,16 +47,20 @@ class HeroCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Icon(
-                      Icons.book,
+                      Icons.type_specimen,
                       size: 12,
-                      color: Colors.grey,
+                      color: Color.fromRGBO(204, 244, 254, 1)
                     ),
                     SizedBox(
                       width: 2.0,
                     ),
                     Flexible(
                       child: Text(defaultStringValue(hero.biography?.publisher),
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey,),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Color.fromRGBO(204, 244, 254, 1)
+                        ),
                       ),
                     ),
                   ],
